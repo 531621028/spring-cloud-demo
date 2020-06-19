@@ -1,0 +1,4 @@
+spring:
+  profiles:
+    active: prod, dev #后面的配置会覆盖前面的
+

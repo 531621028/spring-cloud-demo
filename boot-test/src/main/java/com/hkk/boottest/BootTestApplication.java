@@ -1,0 +1,19 @@
+package com.hkk.boottest;
+
+import com.hkk.boottest.config.ProfileConfig;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.context.ConfigurableApplicationContext;
+
+@SpringBootApplication
+@EnableConfigurationProperties(ProfileConfig.class)
+public class BootTestApplication {
+
+    public static void main(String[] args) {
+       ConfigurableApplicationContext applicationContext = SpringApplication.run(BootTestApplication.class, args);
+        ProfileConfig config = applicationContext.getBean(ProfileConfig.class);
+        System.out.println(config.getName());
+    }
+
+}
