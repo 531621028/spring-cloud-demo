@@ -8,6 +8,13 @@ spring:
     name: eureka-provider
 
 eureka:
+  instance:
+    lease-renewal-interval-in-seconds: 30 # 心跳的间隔 默认30秒
   client:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka/
+    # InstanceInfoReplicator定时任务，会定时读取配置文件，如果有变更则调用setIsDirty，之后是调用instanceInfo.isDirtyWithTime()，如果是dirty则会重新register并重置isInstanceInfoDirty，更新lastDirtyTimestamp
+    initial-instance-info-replication-interval-seconds: 40 # 启动之后，间隔多长时间检测本地配置的数据是否更新，默认40 InstanceInfoReplicator
+    instance-info-replication-interval-seconds: 30 # 第一次之后每隔多少秒间隔多长时间检测本地配置的数据是否更新，默认30 InstanceInfoReplicator
+    on-demand-update-status-change: true #客户端的状态发生变化时候立即更新客户端信息到server端，默认true， 当为true的时候会注册监听器，然后调用InstanceInfoReplicator的run方法
+    registry-fetch-interval-seconds: 30 #客户端缓存的刷新时间，默认30

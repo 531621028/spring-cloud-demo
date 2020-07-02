@@ -2,13 +2,14 @@ package com.hkk.configclient;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ConfigurableApplicationContext;
 
 @SpringBootApplication
 public class ConfigClientApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(ConfigClientApplication.class, args);
-        System.out.println();
+        ConfigurableApplicationContext applicationContext= SpringApplication.run(ConfigClientApplication.class, args);
+        System.out.println(applicationContext.getEnvironment());
     }
 
 }

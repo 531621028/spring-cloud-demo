@@ -2,14 +2,14 @@ package com.hkk.eurekaclient;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.context.ConfigurableApplicationContext;
 
 @SpringBootApplication
-@EnableEurekaClient
 public class EurekaProviderApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(EurekaProviderApplication.class, args);
+        ConfigurableApplicationContext applicationContext = SpringApplication.run(EurekaProviderApplication.class, args);
+        System.out.println(applicationContext.getEnvironment());
     }
 
 }
