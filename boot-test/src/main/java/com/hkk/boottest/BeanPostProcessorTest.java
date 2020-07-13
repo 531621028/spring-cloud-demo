@@ -28,12 +28,8 @@ public class BeanPostProcessorTest implements BeanPostProcessor {
     public Object postProcessAfterInitialization(Object bean, String beanName)
         throws BeansException {
         if (bean instanceof LogTest) {
-            System.out.println("log service");
             logWrapper.setLog((LogTest) bean);
             return logWrapper;
-        }
-        if (bean instanceof SayHello) {
-            System.out.println("hello service");
         }
         return bean;
     }
