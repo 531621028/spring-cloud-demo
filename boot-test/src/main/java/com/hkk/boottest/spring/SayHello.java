@@ -1,5 +1,6 @@
-package com.hkk.boottest;
+package com.hkk.boottest.spring;
 
+import com.hkk.boottest.spring.LogTest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

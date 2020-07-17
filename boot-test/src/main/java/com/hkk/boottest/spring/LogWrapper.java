@@ -1,4 +1,6 @@
-package com.hkk.boottest;
+package com.hkk.boottest.spring;
+
+import com.hkk.boottest.spring.LogTest;
 
 /**
  * @author kang

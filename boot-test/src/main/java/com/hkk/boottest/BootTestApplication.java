@@ -1,6 +1,8 @@
 package com.hkk.boottest;
 
 import com.hkk.boottest.config.ProfileConfig;
+import com.hkk.boottest.spring.LogTest;
+import com.hkk.boottest.spring.SayHello;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;

@@ -1,4 +1,4 @@
-package com.hkk.boottest;
+package com.hkk.boottest.spring;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
  * @since 2020/7/13
  */
 @Component
-public class LogTestImpl implements  LogTest{
+public class LogTestImpl implements LogTest {
 
 
     @Autowired

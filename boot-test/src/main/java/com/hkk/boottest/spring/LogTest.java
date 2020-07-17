@@ -1,4 +1,4 @@
-package com.hkk.boottest;
+package com.hkk.boottest.spring;
 
 /**
  * @author kang
