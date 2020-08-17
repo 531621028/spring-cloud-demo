@@ -24,13 +24,13 @@ public class BeanPostProcessorTest implements BeanPostProcessor {
     private LogWrapper logWrapper = new LogWrapper();
 
 
-    @Override
-    public Object postProcessAfterInitialization(Object bean, String beanName)
-        throws BeansException {
-        if (bean instanceof LogTest) {
-            logWrapper.setLog((LogTest) bean);
-            return logWrapper;
-        }
-        return bean;
-    }
+//    @Override
+//    public Object postProcessAfterInitialization(Object bean, String beanName)
+//        throws BeansException {
+//        if (bean instanceof LogTest) {
+//            logWrapper.setLog((LogTest) bean);
+//            return logWrapper;
+//        }
+//        return bean;
+//    }
 }
