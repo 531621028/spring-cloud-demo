@@ -1,6 +1,5 @@
 package com.hkk.boottest;
 
-import java.sql.SQLOutput;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
