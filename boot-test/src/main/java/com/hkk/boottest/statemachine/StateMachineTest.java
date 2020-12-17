@@ -9,9 +9,9 @@ import java.util.Optional;
 public class StateMachineTest {
 
     public static void main(String[] args) {
-        ApkStatusMachine machine = new ApkStatusMachine();
-        Optional<StateTransaction<ApkState, ApkEvent, Apk>> optional = machine
-            .transfer(ApkState.AUDITING, ApkEvent.PASS, new Apk());
+        ArticleStatusMachine machine = new ArticleStatusMachine();
+        Optional<StateTransaction<ArticleState, ArticleEvent, Article>> optional = machine
+            .transfer(ArticleState.AUDITING, ArticleEvent.PASS, new Article());
         optional.ifPresent(System.out::println);
     }
 
