@@ -10,7 +10,7 @@ public class StateMachineTest {
 
     public static void main(String[] args) {
         ApkStatusMachine machine = new ApkStatusMachine();
-        Optional<ApkState> optional = machine
+        Optional<StateTransaction<ApkState, ApkEvent, Apk>> optional = machine
             .transfer(ApkState.AUDITING, ApkEvent.PASS, new Apk());
         optional.ifPresent(System.out::println);
     }

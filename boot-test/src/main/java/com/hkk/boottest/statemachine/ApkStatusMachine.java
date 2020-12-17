@@ -18,24 +18,16 @@ import java.util.Set;
  */
 public class ApkStatusMachine implements StateMachine<ApkState, ApkEvent, Apk> {
 
-    private static final Set<ApkStateMachineTransaction> transactions;
-
-    static {
-        transactions = Sets.newHashSet(
-            new ApkStateMachineTransaction(DRAFT, AUDITING, SUBMIT, System.out::println),
-            new ApkStateMachineTransaction(AUDITING, SUCCESS, PASS, System.out::println),
-            new ApkStateMachineTransaction(AUDITING, FAILED, REJECT, System.out::println)
-        );
-    }
+    private static final Set<StateTransaction<ApkState, ApkEvent, Apk>> transactions = Sets.newHashSet(
+        new StateTransaction<>(DRAFT, AUDITING, SUBMIT, System.out::println),
+        new StateTransaction<>(AUDITING, SUCCESS, PASS, System.out::println),
+        new StateTransaction<>(AUDITING, FAILED, REJECT, System.out::println)
+    );
 
     @Override
-    public Optional<ApkState> transfer(ApkState apkState, ApkEvent apkEvent, Apk apk) {
-        Optional<ApkStateMachineTransaction> transactionOptional = transactions.stream().filter(t ->
+    public Optional<StateTransaction<ApkState, ApkEvent, Apk>> transfer(ApkState apkState,
+        ApkEvent apkEvent, Apk apk) {
+        return transactions.stream().filter(t ->
             t.getCurrentState().equals(apkState) && t.getEvent().equals(apkEvent)).findAny();
-        if (transactionOptional.isPresent()) {
-            transactionOptional.get().getAction().accept(apk);
-            return Optional.of(transactionOptional.get().getNextState());
-        }
-        return Optional.empty();
     }
 }

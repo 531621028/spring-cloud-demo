@@ -9,5 +9,5 @@ import java.util.function.Consumer;
  */
 public interface StateMachine<State, Event, Target> {
 
-    Optional<State> transfer(State state, Event event, Target target);
+    Optional<StateTransaction<State, Event, Target>> transfer(State state, Event event, Target target);
 }
