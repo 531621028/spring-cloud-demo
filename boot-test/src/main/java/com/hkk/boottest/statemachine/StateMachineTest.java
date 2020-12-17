@@ -11,8 +11,8 @@ public class StateMachineTest {
     public static void main(String[] args) {
         ArticleStatusMachine machine = new ArticleStatusMachine();
         Optional<StateTransaction<ArticleState, ArticleEvent, Article>> optional = machine
-            .transfer(ArticleState.AUDITING, ArticleEvent.PASS, new Article());
-        optional.ifPresent(System.out::println);
+            .transfer(ArticleState.AUDITING, ArticleEvent.PASS);
+        optional.ifPresent(o->optional.get().getAction().accept(new Article()));
     }
 
 }

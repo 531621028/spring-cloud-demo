@@ -4,10 +4,9 @@ import java.util.Optional;
 
 /**
  * @author kang
- * @since 2020/12/17
+ * @since 2020/12/17o
  */
-public interface StateMachine<State, Event, Target> {
+public interface StateMachine<State, Event, Source> {
 
-    Optional<StateTransaction<State, Event, Target>> transfer(State state, Event event,
-        Target target);
+    Optional<StateTransaction<State, Event, Source>> transfer(State state, Event event);
 }

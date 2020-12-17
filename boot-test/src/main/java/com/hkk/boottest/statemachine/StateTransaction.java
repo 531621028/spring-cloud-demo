@@ -10,9 +10,9 @@ import lombok.Getter;
  */
 @Getter
 @AllArgsConstructor
-public class StateTransaction<State, Event, Target> {
+public class StateTransaction<State, Event, Source> {
     private final State currentState;
     private final State nextState;
     private final Event event;
-    private final Consumer<Target> action;
+    private final Consumer<Source> action;
 }

@@ -18,17 +18,20 @@ import java.util.Set;
  */
 public class ArticleStatusMachine implements StateMachine<ArticleState, ArticleEvent, Article> {
 
-    private static final Set<StateTransaction<ArticleState, ArticleEvent, Article>> transactions = Sets.newHashSet(
-        new StateTransaction<>(DRAFT, AUDITING, SUBMIT, System.out::println),
-        new StateTransaction<>(AUDITING, SUCCESS, PASS, System.out::println),
-        new StateTransaction<>(AUDITING, FAILED, REJECT, System.out::println)
-    );
+    @SuppressWarnings("unchecked")
+    private static final Set<StateTransaction<ArticleState, ArticleEvent, Article>> transactions = Sets
+        .newHashSet(
+            new StateTransaction<>(DRAFT, AUDITING, SUBMIT, System.out::println),
+            new StateTransaction<>(AUDITING, SUCCESS, PASS, System.out::println),
+            new StateTransaction<>(AUDITING, FAILED, REJECT, System.out::println)
+        );
 
     @Override
     public Optional<StateTransaction<ArticleState, ArticleEvent, Article>> transfer(
         ArticleState articleState,
-        ArticleEvent articleEvent, Article article) {
+        ArticleEvent articleEvent) {
         return transactions.stream().filter(t ->
-            t.getCurrentState().equals(articleState) && t.getEvent().equals(articleEvent)).findAny();
+            t.getCurrentState().equals(articleState) && t.getEvent().equals(articleEvent))
+            .findAny();
     }
 }
