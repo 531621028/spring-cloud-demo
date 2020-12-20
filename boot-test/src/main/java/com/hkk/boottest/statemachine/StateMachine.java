@@ -6,7 +6,14 @@ import java.util.Optional;
  * @author kang
  * @since 2020/12/17o
  */
-public interface StateMachine<State, Event, Source> {
+public interface StateMachine<State, Event> {
 
-    Optional<StateTransaction<State, Event, Source>> transfer(State state, Event event);
+    /**
+     * 根据当前状态判断返回下一个状态
+     * @param state 当前状态
+     * @param event 事件类型
+     * @return 下一个状态
+     */
+    Optional<State> nextState(State state, Event event);
+
 }

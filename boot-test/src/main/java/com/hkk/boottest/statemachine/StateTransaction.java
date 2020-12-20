@@ -1,6 +1,5 @@
 package com.hkk.boottest.statemachine;
 
-import java.util.function.Consumer;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -10,9 +9,8 @@ import lombok.Getter;
  */
 @Getter
 @AllArgsConstructor
-public class StateTransaction<State, Event, Source> {
+public class StateTransaction<State, Event> {
     private final State currentState;
     private final State nextState;
     private final Event event;
-    private final Consumer<Source> action;
 }
