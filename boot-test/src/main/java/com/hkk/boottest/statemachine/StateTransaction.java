@@ -10,7 +10,18 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public class StateTransaction<State, Event> {
+
+    /**
+     * 当前的状态
+     */
     private final State currentState;
-    private final State nextState;
+    /**
+     * 当前发生事件
+     */
     private final Event event;
+    /**
+     * 下一个状态
+     */
+    private final State nextState;
+
 }

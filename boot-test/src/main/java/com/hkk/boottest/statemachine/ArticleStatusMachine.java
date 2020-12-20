@@ -18,20 +18,24 @@ import java.util.Set;
  */
 public class ArticleStatusMachine implements StateMachine<ArticleState, ArticleEvent> {
 
+    /**
+     * 初始化合法的状态变更的集合
+     */
     @SuppressWarnings("unchecked")
     private static final Set<StateTransaction<ArticleState, ArticleEvent>> transactions = Sets
         .newHashSet(
-            new StateTransaction<>(DRAFT, AUDITING, SUBMIT),
-            new StateTransaction<>(AUDITING, SUCCESS, PASS),
-            new StateTransaction<>(AUDITING, FAILED, REJECT)
+            new StateTransaction<>(DRAFT, SUBMIT, AUDITING),
+            new StateTransaction<>(AUDITING, PASS, SUCCESS),
+            new StateTransaction<>(AUDITING, REJECT, FAILED)
         );
 
     @Override
     public Optional<ArticleState> nextState(
         ArticleState articleState,
         ArticleEvent articleEvent) {
-        Optional<StateTransaction<ArticleState, ArticleEvent>> transaction = transactions.stream().filter(t ->
-            t.getCurrentState().equals(articleState) && t.getEvent().equals(articleEvent))
+        Optional<StateTransaction<ArticleState, ArticleEvent>> transaction = transactions.stream()
+            .filter(t ->
+                t.getCurrentState().equals(articleState) && t.getEvent().equals(articleEvent))
             .findAny();
         return transaction.map(StateTransaction::getNextState);
     }

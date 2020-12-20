@@ -10,10 +10,11 @@ public interface StateMachine<State, Event> {
 
     /**
      * 根据当前状态判断返回下一个状态
-     * @param state 当前状态
+     *
+     * @param currentState 当前状态
      * @param event 事件类型
      * @return 下一个状态
      */
-    Optional<State> nextState(State state, Event event);
+    Optional<State> nextState(State currentState, Event event);
 
 }
