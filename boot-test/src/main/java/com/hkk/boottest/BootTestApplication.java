@@ -20,7 +20,7 @@ public class BootTestApplication {
         System.out.println(BootTestApplication.class.getClassLoader());
         ConfigurableApplicationContext applicationContext = SpringApplication
             .run(BootTestApplication.class, args);
-        LoggTest logTest = applicationContext.getBean(LogTest.class);
+        LogTest logTest = applicationContext.getBean(LogTest.class);
         logTest.logBefore();
         logTest.logAfter();
         System.out.println("=====");
